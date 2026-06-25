@@ -45,8 +45,8 @@ export default function Footer() {
           </div>
           <div>
             <div style={{ fontSize: 13, fontWeight: 700, color: "#E8F4F0", textTransform: "uppercase", letterSpacing: 1, marginBottom: 16, fontFamily: "'DM Sans', sans-serif" }}>Contacto</div>
-            <a href="mailto:hola@betterai.es" style={{ display: "flex", alignItems: "center", gap: 8, color: "#6B8099", textDecoration: "none", fontSize: 14, marginBottom: 10, fontFamily: "'DM Sans', sans-serif" }}>
-              <Mail size={15}/> hola@betterai.es
+            <a href="mailto:betterai1@hotmail.com" style={{ display: "flex", alignItems: "center", gap: 8, color: "#6B8099", textDecoration: "none", fontSize: 14, marginBottom: 10, fontFamily: "'DM Sans', sans-serif" }}>
+              <Mail size={15}/> betterai1@hotmail.com
             </a>
             <a href={`${prefix}#formulario`} className="footer-cta"
               style={{ display: "inline-flex", alignItems: "center", gap: 8, background: TEAL, color: "#fff", padding: "10px 18px", borderRadius: 8, textDecoration: "none", fontSize: 14, fontWeight: 600, fontFamily: "'DM Sans', sans-serif", transition: "background .2s" }}>

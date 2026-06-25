@@ -89,7 +89,7 @@ export default function Cookies() {
       <h2>6. Contacto</h2>
       <p>
         Para cualquier duda relacionada con el uso de cookies, puedes escribirnos a{" "}
-        <a href="mailto:hola@betterai.es">hola@betterai.es</a>.
+        <a href="mailto:betterai1@hotmail.com">betterai1@hotmail.com</a>.
       </p>
     </LegalLayout>
   );

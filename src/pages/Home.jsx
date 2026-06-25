@@ -164,11 +164,35 @@ const FAQItem = ({ question, answer }) => {
 export default function Home() {
   const [formData, setFormData] = useState({ nombre: "", empresa: "", email: "", telefono: "", tipo: "", mensaje: "" });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: conectar con backend, EmailJS o webhook
-    setSent(true);
+    setSending(true);
+    setSubmitError(false);
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/betterai1@hotmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `Nueva solicitud de demo: ${formData.empresa || formData.nombre}`,
+          Nombre: formData.nombre,
+          Empresa: formData.empresa,
+          Email: formData.email,
+          Teléfono: formData.telefono || "—",
+          "Tipo de negocio": formData.tipo || "—",
+          Mensaje: formData.mensaje || "—",
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.success === "false" || data.success === false) throw new Error("request failed");
+      setSent(true);
+    } catch {
+      setSubmitError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -519,9 +543,14 @@ export default function Home() {
                     onFocus={e => e.target.style.borderColor=TEAL}
                     onBlur={e => e.target.style.borderColor="#D1D9E0"}/>
                 </div>
-                <button type="submit" className="submit-btn"
-                  style={{ width: "100%", background: TEAL, color: "#fff", padding: "16px", borderRadius: 10, fontSize: 16, fontWeight: 700, border: "none", cursor: "pointer", fontFamily: "'DM Sans', sans-serif", transition: "background .2s, transform .15s, box-shadow .2s", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
-                  No pierdas oportunidades <ArrowRight size={18}/>
+                {submitError && (
+                  <p style={{ textAlign: "center", fontSize: 14, color: "#E05C3A", marginBottom: 14, fontFamily: "'DM Sans', sans-serif" }}>
+                    No hemos podido enviar tu solicitud. Inténtalo de nuevo o escríbenos directamente a betterai1@hotmail.com.
+                  </p>
+                )}
+                <button type="submit" disabled={sending} className="submit-btn"
+                  style={{ width: "100%", background: TEAL, color: "#fff", padding: "16px", borderRadius: 10, fontSize: 16, fontWeight: 700, border: "none", cursor: sending ? "default" : "pointer", opacity: sending ? 0.7 : 1, fontFamily: "'DM Sans', sans-serif", transition: "background .2s, transform .15s, box-shadow .2s", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
+                  {sending ? "Enviando..." : <>No pierdas oportunidades <ArrowRight size={18}/></>}
                 </button>
                 <p style={{ textAlign: "center", fontSize: 13, color: "#9CA3AF", marginTop: 14, fontFamily: "'DM Sans', sans-serif" }}>Sin compromisos. Te contactamos en menos de 24h.</p>
               </form>

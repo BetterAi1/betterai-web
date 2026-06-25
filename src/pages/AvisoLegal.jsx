@@ -16,7 +16,7 @@ export default function AvisoLegal() {
         <li>NIF / CIF: <Pending>NIF o CIF</Pending></li>
         <li>Domicilio: <Pending>domicilio fiscal o de notificaciones</Pending></li>
         <li>Datos registrales: <Pending>si procede, datos de inscripción en el Registro Mercantil</Pending></li>
-        <li>Correo electrónico de contacto: <a href="mailto:hola@betterai.es">hola@betterai.es</a></li>
+        <li>Correo electrónico de contacto: <a href="mailto:betterai1@hotmail.com">betterai1@hotmail.com</a></li>
       </ul>
       <p>
         <em>

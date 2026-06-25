@@ -15,7 +15,7 @@ export default function PoliticaPrivacidad() {
         <li>Denominación / Nombre: <Pending>razón social o nombre completo del titular</Pending></li>
         <li>NIF / CIF: <Pending>NIF o CIF</Pending></li>
         <li>Domicilio: <Pending>domicilio fiscal o de notificaciones</Pending></li>
-        <li>Correo electrónico de contacto: <a href="mailto:hola@betterai.es">hola@betterai.es</a></li>
+        <li>Correo electrónico de contacto: <a href="mailto:betterai1@hotmail.com">betterai1@hotmail.com</a></li>
       </ul>
 
       <h2>2. Dos formas en las que tratamos datos personales</h2>
@@ -126,6 +126,11 @@ export default function PoliticaPrivacidad() {
               <td>Alojamiento y despliegue del Sitio Web</td>
               <td>Estados Unidos</td>
             </tr>
+            <tr>
+              <td>FormSubmit</td>
+              <td>Recepción y reenvío por correo electrónico de las solicitudes del formulario de contacto/demo</td>
+              <td>Estados Unidos / Unión Europea</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -163,7 +168,7 @@ export default function PoliticaPrivacidad() {
       </ul>
       <p>
         Estos derechos pueden ejercerse enviando una solicitud a{" "}
-        <a href="mailto:hola@betterai.es">hola@betterai.es</a>, indicando el derecho que se desea
+        <a href="mailto:betterai1@hotmail.com">betterai1@hotmail.com</a>, indicando el derecho que se desea
         ejercer y aportando la documentación necesaria para verificar la identidad. Si los datos se
         tratan en nombre de un negocio cliente (por ejemplo, datos recogidos por WhatsApp para
         gestionar una cita), también se pueden ejercer dichos derechos directamente ante ese negocio,
@@ -199,7 +204,7 @@ export default function PoliticaPrivacidad() {
       <h2>12. Contacto</h2>
       <p>
         Para cualquier duda relacionada con esta Política de Privacidad, puedes escribirnos a{" "}
-        <a href="mailto:hola@betterai.es">hola@betterai.es</a>.
+        <a href="mailto:betterai1@hotmail.com">betterai1@hotmail.com</a>.
       </p>
     </LegalLayout>
   );
