@@ -1,1 +1,51 @@
 @import "tailwindcss";
+
+:root {
+  --teal: #2D8B7A;
+  --teal-light: #3AA898;
+  --teal-dark: #1F6B5E;
+}
+
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-link:active,
+.footer-link:active {
+  color: #fff;
+}
+
+.cta-primary:active,
+.submit-btn:active {
+  background: var(--teal-dark);
+}
+
+.cta-ghost:active {
+  border-color: var(--teal);
+  color: #fff;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-link:hover,
+  .footer-link:hover {
+    color: #fff;
+  }
+  .nav-cta:hover,
+  .footer-cta:hover {
+    background: var(--teal-light);
+  }
+  .cta-primary:hover,
+  .submit-btn:hover {
+    background: var(--teal-light);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 28px rgba(45, 139, 122, 0.35);
+  }
+  .cta-ghost:hover {
+    border-color: var(--teal);
+    color: #fff;
+  }
+  .usecase-card:hover {
+    box-shadow: 0 8px 24px rgba(45, 139, 122, 0.12);
+    transform: translateY(-3px);
+  }
+}
