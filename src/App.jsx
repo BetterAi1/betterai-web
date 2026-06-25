@@ -56,6 +56,9 @@ const Logo = ({ light = false, size = 38 }) => {
 };
 
 /* ─── NAVBAR ─────────────────────────────────────────────── */
+const NAV_ITEMS = ["Problema","Solución","Cómo funciona","Casos de uso","FAQ"];
+const navSlug = (item) => `#${item.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/\s/g,"-")}`;
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
@@ -63,21 +66,15 @@ const Navbar = () => {
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <Logo light />
         <div className="hidden md:flex items-center gap-8">
-          {["Problema","Solución","Cómo funciona","Casos de uso","FAQ"].map(item => (
-            <a key={item}
-              href={`#${item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s/g,"-")}`}
-              style={{ color: "#9CAAB8", fontSize: 14, fontFamily: "'DM Sans', sans-serif", textDecoration: "none", transition: "color .2s" }}
-              onMouseEnter={e => e.target.style.color="#fff"}
-              onMouseLeave={e => e.target.style.color="#9CAAB8"}>
+          {NAV_ITEMS.map(item => (
+            <a key={item} href={navSlug(item)} className="nav-link"
+              style={{ color: "#9CAAB8", fontSize: 14, fontFamily: "'DM Sans', sans-serif", textDecoration: "none", transition: "color .2s" }}>
               {item}
             </a>
           ))}
         </div>
-        <a href="#formulario"
-          style={{ background: TEAL, color: "#fff", padding: "10px 22px", borderRadius: 8, fontSize: 14, fontWeight: 600, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", transition: "background .2s" }}
-          onMouseEnter={e => e.currentTarget.style.background = TEAL_LIGHT}
-          onMouseLeave={e => e.currentTarget.style.background = TEAL}
-          className="hidden md:block">
+        <a href="#formulario" className="hidden md:block nav-cta"
+          style={{ background: TEAL, color: "#fff", padding: "10px 22px", borderRadius: 8, fontSize: 14, fontWeight: 600, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", transition: "background .2s" }}>
           Solicitar demo
         </a>
         <button onClick={() => setOpen(!open)} className="md:hidden" style={{ background: "none", border: "none", cursor: "pointer", color: "#fff" }}>
@@ -86,8 +83,8 @@ const Navbar = () => {
       </div>
       {open && (
         <div style={{ background: DARK_CARD, borderTop: `1px solid ${DARK_BORDER}`, padding: "16px 24px" }}>
-          {["Problema","Solución","Cómo funciona","Casos de uso","FAQ"].map(item => (
-            <a key={item} href="#formulario" onClick={() => setOpen(false)}
+          {NAV_ITEMS.map(item => (
+            <a key={item} href={navSlug(item)} onClick={() => setOpen(false)}
               style={{ display: "block", color: "#9CAAB8", fontSize: 15, padding: "10px 0", fontFamily: "'DM Sans', sans-serif", textDecoration: "none", borderBottom: `1px solid ${DARK_BORDER}` }}>
               {item}
             </a>
@@ -215,9 +212,7 @@ const StepCard = ({ number, title, desc }) => (
 );
 
 const UseCaseCard = ({ icon: Icon, title, desc }) => (
-  <div style={{ background: "#fff", border: "1px solid #E8EEF3", borderRadius: 14, padding: "24px 22px", transition: "box-shadow .2s, transform .2s", cursor: "default" }}
-    onMouseEnter={e => { e.currentTarget.style.boxShadow="0 8px 24px rgba(45,139,122,0.12)"; e.currentTarget.style.transform="translateY(-3px)"; }}
-    onMouseLeave={e => { e.currentTarget.style.boxShadow="none"; e.currentTarget.style.transform="none"; }}>
+  <div className="usecase-card" style={{ background: "#fff", border: "1px solid #E8EEF3", borderRadius: 14, padding: "24px 22px", transition: "box-shadow .2s, transform .2s", cursor: "default" }}>
     <div style={{ width: 44, height: 44, borderRadius: 10, background: "#E6F5F2", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
       <Icon size={22} color={TEAL}/>
     </div>
@@ -281,7 +276,7 @@ export default function BetterAiLanding() {
         {/* subtle grid */}
         <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(${DARK_BORDER}55 1px, transparent 1px), linear-gradient(90deg, ${DARK_BORDER}55 1px, transparent 1px)`, backgroundSize: "56px 56px", opacity: 0.3, pointerEvents: "none" }}/>
 
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 56, alignItems: "center" }}>
 
           {/* LEFT: headline compacto */}
           <div>
@@ -304,16 +299,12 @@ export default function BetterAiLanding() {
 
             {/* CTAs */}
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-              <a href="#formulario"
-                style={{ background: TEAL, color: "#fff", padding: "14px 28px", borderRadius: 10, fontWeight: 700, fontSize: 16, textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "'DM Sans', sans-serif", transition: "background .2s, transform .15s, box-shadow .2s" }}
-                onMouseEnter={e => { e.currentTarget.style.background=TEAL_LIGHT; e.currentTarget.style.transform="translateY(-1px)"; e.currentTarget.style.boxShadow="0 8px 28px rgba(45,139,122,0.35)"; }}
-                onMouseLeave={e => { e.currentTarget.style.background=TEAL; e.currentTarget.style.transform="none"; e.currentTarget.style.boxShadow="none"; }}>
+              <a href="#formulario" className="cta-primary"
+                style={{ background: TEAL, color: "#fff", padding: "14px 28px", borderRadius: 10, fontWeight: 700, fontSize: 16, textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "'DM Sans', sans-serif", transition: "background .2s, transform .15s, box-shadow .2s" }}>
                 No pierdas oportunidades <ArrowRight size={18}/>
               </a>
-              <a href="#como-funciona"
-                style={{ background: "transparent", color: "#8FA5B8", padding: "14px 24px", borderRadius: 10, fontWeight: 600, fontSize: 16, textDecoration: "none", border: `1px solid ${DARK_BORDER}`, fontFamily: "'DM Sans', sans-serif", transition: "border-color .2s, color .2s" }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor=TEAL; e.currentTarget.style.color="#fff"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor=DARK_BORDER; e.currentTarget.style.color="#8FA5B8"; }}>
+              <a href="#como-funciona" className="cta-ghost"
+                style={{ background: "transparent", color: "#8FA5B8", padding: "14px 24px", borderRadius: 10, fontWeight: 600, fontSize: 16, textDecoration: "none", border: `1px solid ${DARK_BORDER}`, fontFamily: "'DM Sans', sans-serif", transition: "border-color .2s, color .2s" }}>
                 Ver cómo funciona
               </a>
             </div>
@@ -584,7 +575,7 @@ export default function BetterAiLanding() {
           ) : (
             <div style={{ background: "#fff", borderRadius: 16, padding: "40px 36px", border: "1px solid #E8EEF3", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
               <form onSubmit={handleSubmit}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 16, marginBottom: 16 }}>
                   {[
                     { id: "nombre",   label: "Nombre *",          placeholder: "Tu nombre",          type: "text",  req: true },
                     { id: "empresa",  label: "Empresa / Clínica *", placeholder: "Nombre del negocio", type: "text",  req: true },
@@ -619,10 +610,8 @@ export default function BetterAiLanding() {
                     onFocus={e => e.target.style.borderColor=TEAL}
                     onBlur={e => e.target.style.borderColor="#D1D9E0"}/>
                 </div>
-                <button type="submit"
-                  style={{ width: "100%", background: TEAL, color: "#fff", padding: "16px", borderRadius: 10, fontSize: 16, fontWeight: 700, border: "none", cursor: "pointer", fontFamily: "'DM Sans', sans-serif", transition: "background .2s, transform .15s, box-shadow .2s", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}
-                  onMouseEnter={e => { e.currentTarget.style.background=TEAL_LIGHT; e.currentTarget.style.transform="translateY(-1px)"; e.currentTarget.style.boxShadow="0 8px 28px rgba(45,139,122,0.35)"; }}
-                  onMouseLeave={e => { e.currentTarget.style.background=TEAL; e.currentTarget.style.transform="none"; e.currentTarget.style.boxShadow="none"; }}>
+                <button type="submit" className="submit-btn"
+                  style={{ width: "100%", background: TEAL, color: "#fff", padding: "16px", borderRadius: 10, fontSize: 16, fontWeight: 700, border: "none", cursor: "pointer", fontFamily: "'DM Sans', sans-serif", transition: "background .2s, transform .15s, box-shadow .2s", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
                   No pierdas oportunidades <ArrowRight size={18}/>
                 </button>
                 <p style={{ textAlign: "center", fontSize: 13, color: "#9CA3AF", marginTop: 14, fontFamily: "'DM Sans', sans-serif" }}>Sin compromisos. Te contactamos en menos de 24h.</p>
@@ -646,17 +635,13 @@ export default function BetterAiLanding() {
             <div>
               <div style={{ fontSize: 13, fontWeight: 700, color: "#E8F4F0", textTransform: "uppercase", letterSpacing: 1, marginBottom: 16, fontFamily: "'DM Sans', sans-serif" }}>Producto</div>
               {["Cómo funciona","Casos de uso","Integraciones","FAQ"].map(link => (
-                <a key={link} href="#" style={{ display: "block", fontSize: 14, color: "#6B8099", marginBottom: 10, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", transition: "color .2s" }}
-                  onMouseEnter={e => e.target.style.color="#fff"}
-                  onMouseLeave={e => e.target.style.color="#6B8099"}>{link}</a>
+                <a key={link} href="#" className="footer-link" style={{ display: "block", fontSize: 14, color: "#6B8099", marginBottom: 10, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", transition: "color .2s" }}>{link}</a>
               ))}
             </div>
             <div>
               <div style={{ fontSize: 13, fontWeight: 700, color: "#E8F4F0", textTransform: "uppercase", letterSpacing: 1, marginBottom: 16, fontFamily: "'DM Sans', sans-serif" }}>Legal</div>
               {["Política de privacidad","Aviso legal","Cookies"].map(link => (
-                <a key={link} href="#" style={{ display: "block", fontSize: 14, color: "#6B8099", marginBottom: 10, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", transition: "color .2s" }}
-                  onMouseEnter={e => e.target.style.color="#fff"}
-                  onMouseLeave={e => e.target.style.color="#6B8099"}>{link}</a>
+                <a key={link} href="#" className="footer-link" style={{ display: "block", fontSize: 14, color: "#6B8099", marginBottom: 10, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", transition: "color .2s" }}>{link}</a>
               ))}
             </div>
             <div>
@@ -664,10 +649,8 @@ export default function BetterAiLanding() {
               <a href="mailto:hola@betterai.es" style={{ display: "flex", alignItems: "center", gap: 8, color: "#6B8099", textDecoration: "none", fontSize: 14, marginBottom: 10, fontFamily: "'DM Sans', sans-serif" }}>
                 <Mail size={15}/> hola@betterai.es
               </a>
-              <a href="#formulario"
-                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: TEAL, color: "#fff", padding: "10px 18px", borderRadius: 8, textDecoration: "none", fontSize: 14, fontWeight: 600, fontFamily: "'DM Sans', sans-serif", transition: "background .2s" }}
-                onMouseEnter={e => e.currentTarget.style.background=TEAL_LIGHT}
-                onMouseLeave={e => e.currentTarget.style.background=TEAL}>
+              <a href="#formulario" className="footer-cta"
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: TEAL, color: "#fff", padding: "10px 18px", borderRadius: 8, textDecoration: "none", fontSize: 14, fontWeight: 600, fontFamily: "'DM Sans', sans-serif", transition: "background .2s" }}>
                 Solicitar demo <ArrowRight size={14}/>
               </a>
             </div>
