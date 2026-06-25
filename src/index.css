@@ -25,6 +25,77 @@ a, button {
   color: #fff;
 }
 
+.legal-content h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.3px;
+  margin: 40px 0 14px;
+}
+.legal-content h2:first-child {
+  margin-top: 0;
+}
+.legal-content h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+  margin: 24px 0 10px;
+}
+.legal-content p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #4B5563;
+  margin: 0 0 14px;
+}
+.legal-content ul {
+  margin: 0 0 14px;
+  padding-left: 20px;
+}
+.legal-content li {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #4B5563;
+  margin-bottom: 6px;
+}
+.legal-content strong {
+  color: #111827;
+}
+.legal-content a {
+  color: var(--teal);
+  text-decoration: underline;
+}
+.legal-content .table-wrap {
+  overflow-x: auto;
+  margin: 14px 0 20px;
+}
+.legal-content table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.legal-content th, .legal-content td {
+  border: 1px solid #E8EEF3;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+.legal-content th {
+  background: #F4F7FA;
+  font-weight: 700;
+  color: #111827;
+}
+.pending-flag {
+  background: #FFF3CD;
+  color: #92660B;
+  border: 1px solid #F5D88A;
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-weight: 700;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .nav-link:hover,
   .footer-link:hover {
