@@ -102,18 +102,18 @@ export default function PoliticaPrivacidad() {
               <td>Unión Europea / Estados Unidos</td>
             </tr>
             <tr>
-              <td>Proveedor del modelo de inteligencia artificial (p. ej. OpenAI, GPT-4o-mini)</td>
-              <td>Interpretación del lenguaje natural y generación de las respuestas del agente "Sofía"</td>
+              <td>Proveedor de inteligencia artificial conversacional</td>
+              <td>Generación automatizada de las respuestas en las conversaciones</td>
               <td>Estados Unidos</td>
             </tr>
             <tr>
               <td>n8n</td>
-              <td>Orquestación de los flujos de automatización entre WhatsApp, la IA y la base de datos</td>
+              <td>Automatización de procesos internos del servicio</td>
               <td>Unión Europea</td>
             </tr>
             <tr>
               <td>Airtable</td>
-              <td>Base de datos de clientes, reservas, agenda y configuración del servicio</td>
+              <td>Almacenamiento de los datos de clientes y reservas</td>
               <td>Estados Unidos</td>
             </tr>
             <tr>
