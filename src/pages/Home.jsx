@@ -395,10 +395,10 @@ export default function Home() {
             style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "20px 52px" }}
           >
             {[
-              { value: "< 1s",    label: "Tiempo de primera respuesta" },
-              { value: "24/7",    label: "Disponibilidad garantizada" },
-              { value: "80%",     label: "Citas sin intervención humana" },
-              { value: "3-5 días", label: "Implementación completa" },
+              { value: "Al instante", label: "Tiempo de respuesta" },
+              { value: "24/7",        label: "Disponibilidad" },
+              { value: "Automática",  label: "Gestión de citas" },
+              { value: "En días",     label: "Implementación" },
             ].map(({ value, label }) => (
               <motion.div key={label} variants={staggerChild} style={{ textAlign: "center" }}>
                 <div style={{ fontSize: 26, fontWeight: 800, color: TEAL, fontFamily: "'DM Sans', sans-serif", lineHeight: 1.1, letterSpacing: "-0.5px" }}>{value}</div>
@@ -534,19 +534,17 @@ export default function Home() {
               style={{ display: "flex", flexDirection: "column", gap: 12 }}
             >
               {[
-                { label: "Tiempo de respuesta",                       value: null,  counter: null,                                        display: "Inmediato" },
-                { label: "Disponibilidad",                            value: null,  counter: null,                                        display: "24 / 7 / 365" },
-                { label: "Citas gestionadas sin intervención humana", value: null,  counter: { to: 80, prefix: "Hasta el ", suffix: "%" }, display: null },
-              ].map(({ label, counter, display }) => (
+                { label: "Tiempo de respuesta",                       display: "Al instante" },
+                { label: "Disponibilidad",                            display: "24 / 7 / 365" },
+                { label: "Citas gestionadas sin intervención humana", display: "Automático" },
+              ].map(({ label, display }) => (
                 <motion.div
                   key={label} variants={staggerChild}
                   whileHover={{ x: 4, transition: { duration: 0.2 } }}
                   style={{ display: "flex", justifyContent: "space-between", padding: "12px 16px", background: DARK_CARD, borderRadius: 10, border: `1px solid ${DARK_BORDER}` }}
                 >
                   <span style={{ fontSize: 14, color: "#7A90A4", fontFamily: "'DM Sans', sans-serif" }}>{label}</span>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: TEAL_LIGHT, fontFamily: "'DM Sans', sans-serif" }}>
-                    {counter ? <CountUp {...counter}/> : display}
-                  </span>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: TEAL_LIGHT, fontFamily: "'DM Sans', sans-serif" }}>{display}</span>
                 </motion.div>
               ))}
             </motion.div>
