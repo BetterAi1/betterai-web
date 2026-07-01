@@ -1,4 +1,5 @@
 import { useLocation, Link } from "react-router-dom";
+import { motion } from "motion/react";
 import { Mail, ArrowRight } from "lucide-react";
 import Logo from "./Logo";
 import { TEAL, DARK_BG, DARK_BORDER } from "../theme";
@@ -21,7 +22,14 @@ export default function Footer() {
   const prefix = location.pathname === "/" ? "" : "/";
 
   return (
-    <footer style={{ background: DARK_BG, borderTop: `1px solid ${DARK_BORDER}`, padding: "48px 24px" }}>
+    <motion.footer
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      aria-label="Pie de página"
+      style={{ background: DARK_BG, borderTop: `1px solid ${DARK_BORDER}`, padding: "48px 24px" }}
+    >
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 40, marginBottom: 40 }}>
           <div>
@@ -45,20 +53,20 @@ export default function Footer() {
           </div>
           <div>
             <div style={{ fontSize: 13, fontWeight: 700, color: "#E8F4F0", textTransform: "uppercase", letterSpacing: 1, marginBottom: 16, fontFamily: "'DM Sans', sans-serif" }}>Contacto</div>
-            <a href="mailto:betterai1@hotmail.com" style={{ display: "flex", alignItems: "center", gap: 8, color: "#6B8099", textDecoration: "none", fontSize: 14, marginBottom: 10, fontFamily: "'DM Sans', sans-serif" }}>
+            <a href="mailto:betterai1@hotmail.com" style={{ display: "flex", alignItems: "center", gap: 8, color: "#6B8099", textDecoration: "none", fontSize: 14, marginBottom: 16, fontFamily: "'DM Sans', sans-serif" }}>
               <Mail size={15}/> betterai1@hotmail.com
             </a>
             <a href={`${prefix}#formulario`} className="footer-cta"
               style={{ display: "inline-flex", alignItems: "center", gap: 8, background: TEAL, color: "#fff", padding: "10px 18px", borderRadius: 8, textDecoration: "none", fontSize: 14, fontWeight: 600, fontFamily: "'DM Sans', sans-serif", transition: "background .2s" }}>
-              Solicitar demo <ArrowRight size={14}/>
+              Solicitar demo <span className="cta-arrow"><ArrowRight size={14}/></span>
             </a>
           </div>
         </div>
         <div style={{ borderTop: `1px solid ${DARK_BORDER}`, paddingTop: 24, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-          <span style={{ fontSize: 13, color: "#4A6070", fontFamily: "'DM Sans', sans-serif" }}>© 2025 BetterAI. Todos los derechos reservados.</span>
+          <span style={{ fontSize: 13, color: "#4A6070", fontFamily: "'DM Sans', sans-serif" }}>© 2026 BetterAI. Todos los derechos reservados.</span>
           <span style={{ fontSize: 13, color: "#4A6070", fontStyle: "italic", fontFamily: "'DM Sans', sans-serif" }}>Never miss an opportunity.</span>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

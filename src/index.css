@@ -10,6 +10,23 @@ a, button {
   -webkit-tap-highlight-color: transparent;
 }
 
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 4px;
+  z-index: 9999;
+  background: var(--teal);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+}
+.skip-link:focus {
+  left: 4px;
+}
+
 .nav-link:active,
 .footer-link:active {
   color: #fff;
@@ -23,6 +40,11 @@ a, button {
 .cta-ghost:active {
   border-color: var(--teal);
   color: #fff;
+}
+
+.cta-arrow {
+  display: inline-flex;
+  transition: transform 0.2s ease;
 }
 
 .legal-content h2 {
@@ -96,6 +118,11 @@ a, button {
   white-space: nowrap;
 }
 
+@keyframes typingBlink {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50%       { opacity: 1;   transform: translateY(-3px); }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .nav-link:hover,
   .footer-link:hover {
@@ -108,15 +135,23 @@ a, button {
   .cta-primary:hover,
   .submit-btn:hover {
     background: var(--teal-light);
-    transform: translateY(-1px);
     box-shadow: 0 8px 28px rgba(45, 139, 122, 0.35);
   }
   .cta-ghost:hover {
     border-color: var(--teal);
     color: #fff;
   }
-  .usecase-card:hover {
-    box-shadow: 0 8px 24px rgba(45, 139, 122, 0.12);
-    transform: translateY(-3px);
+  .cta-primary:hover .cta-arrow,
+  .submit-btn:hover .cta-arrow,
+  .footer-cta:hover .cta-arrow {
+    transform: translateX(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
